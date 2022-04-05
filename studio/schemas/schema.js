@@ -1,5 +1,10 @@
 // First, we must import the schema creator
 import createSchema from 'part:@sanity/base/schema-creator'
+import events from "./documents/events"
+import creators from "./documents/creators"
+import categories from './documents/categories'
+import cities from "./documents/cities"
+import speakers from "./documents/speakers"
 
 // Then import schema types from any plugins that might expose them
 import schemaTypes from 'all:part:@sanity/base/schema-type'
@@ -11,6 +16,10 @@ export default createSchema({
   // Then proceed to concatenate our document type
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
-    /* Your types here! */
+    events,
+    creators,
+    categories,
+    cities,
+    speakers
   ]),
 })
