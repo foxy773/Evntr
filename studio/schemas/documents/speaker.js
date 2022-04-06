@@ -1,6 +1,6 @@
 export default {
-    title: "Speakers",
-    name: "speakers",
+    title: "Speaker",
+    name: "speaker",
     type: "document",
     fields: [
         {

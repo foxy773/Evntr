@@ -1,6 +1,6 @@
 export default {
-    title: "Creators",
-    name: "creators",
+    title: "Creator",
+    name: "creator",
     type: "document",
     fields: [
         {

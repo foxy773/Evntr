@@ -1,12 +1,20 @@
 export default {
-    title: "Events",
-    name: "events",
+    title: "Event",
+    name: "event",
     type: "document",
     fields: [
         {
             title: "Event name",
             name: "title",
             type: "string"
+        },
+        {
+            title: "Slug",
+            name: "slug",
+            type: "slug",
+            options: {
+                sourse: "title"
+            }
         },
         {
             title: "Event date",
@@ -28,7 +36,7 @@ export default {
                     name: "city",
                     type: "reference",
                     to: [{
-                        type: "cities"
+                        type: "city"
                     }]
                 },
                 {
@@ -47,7 +55,7 @@ export default {
             title: "Event Creator",
             name: "eventCreator",
             type: "reference",
-            to: [{type: "creators"}]
+            to: [{type: "creator"}]
         },
         {
             title: "Entry price",
@@ -80,7 +88,7 @@ export default {
             of: [{
                 type: "reference",
                 to: [{
-                    type: "categories"
+                    type: "category"
                 }]
             }]
         },
@@ -103,13 +111,13 @@ export default {
             ]
         },
         {
-            title: "Event speakers",
-            name: "speakers",
+            title: "Event speaker",
+            name: "speaker",
             type: "array",
             of: [{
                 type: "reference",
                 to: [{
-                    type: "speakers"
+                    type: "speaker"
                 }]
             }]
         },

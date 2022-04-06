@@ -1,6 +1,6 @@
 export default {
-    title: "Event categories",
-    name: "categories",
+    title: "Event category",
+    name: "category",
     type: "document",
     fields: [
         {

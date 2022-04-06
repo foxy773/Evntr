@@ -1,6 +1,6 @@
 export default {
-    title: "Cities",
-    name: "cities",
+    title: "City",
+    name: "city",
     type: "document",
     fields: [
         {
