@@ -13,11 +13,16 @@ export default {
             name: "slug",
             type: "slug",
             options: {
-                sourse: "title"
+                source: "title"
             }
         },
         {
-            title: "Event date",
+            title: "Event start",
+            name: "date",
+            type: "datetime",
+        },
+        {
+            title: "Event end",
             name: "date",
             type: "datetime",
         },
