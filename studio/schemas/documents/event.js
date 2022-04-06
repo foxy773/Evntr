@@ -18,12 +18,12 @@ export default {
         },
         {
             title: "Event start",
-            name: "date",
+            name: "dateStart",
             type: "datetime",
         },
         {
             title: "Event end",
-            name: "date",
+            name: "dateEnd",
             type: "datetime",
         },
         {
