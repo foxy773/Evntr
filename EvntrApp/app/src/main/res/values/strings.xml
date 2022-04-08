@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">EvntrApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="popular_in_oslo">Popular in Oslo</string>
+    <string name="find_events_in">Find events in</string>
+    <string name="event_price">Event price</string>
 </resources>
