@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:icon="@drawable/ic_hjem"
+        android:title="hjem"/>
+
+    <item
+
+        android:icon="@drawable/ic_baseline_search_24"
+        android:title="Søk"
+        />
+    <item
+
+        android:icon="@drawable/ic_person"
+        android:title="Logg inn"
+        />
+    <item
+
+        android:icon="@drawable/ic_heart_15"
+        android:title="Favoritter"
+        />
+
+</menu>
