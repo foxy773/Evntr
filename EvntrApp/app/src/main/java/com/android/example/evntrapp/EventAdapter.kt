@@ -3,9 +3,7 @@ import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
@@ -18,7 +16,12 @@ import java.util.*
 
 //lateinit var dataSetEvents: List<Event>
 
-class EventAdapter(var dataSetEvents: List<EventsObject>, val callback: (EventsObject) -> Unit): RecyclerView.Adapter<EventAdapter.EventViewHolder>(){
+var hei = StartupFragment()
+
+class EventAdapter(
+    var dataSetEvents: List<EventsObject>,
+    val callback: (EventsObject) -> Unit): RecyclerView.Adapter<EventAdapter.EventViewHolder>(){
+
     inner class EventViewHolder (cellView: View) : RecyclerView.ViewHolder(cellView) {
 
         var eventName : TextView = cellView.findViewById(R.id.textViewEventName)
@@ -50,6 +53,10 @@ class EventAdapter(var dataSetEvents: List<EventsObject>, val callback: (EventsO
         holder.eventCity.text =  "City: ${EventObject.place?.city}"
         holder.eventCreator.text = "Host: ${EventObject.eventCreator?.name}"
 
+        holder.itemView.setOnClickListener {
+            callback(EventObject)
+        }
+
 
 if (EventObject.date != null) {
         val dateString = EventObject.date?.replace("00.000Z", "00Z") ?: ""
@@ -58,11 +65,14 @@ if (EventObject.date != null) {
 
         val simpleFormat = SimpleDateFormat("dd.MM.yyyy HH:mm")
         holder.eventDate.text = simpleFormat.format(dateObject)
+
 }
+
         Picasso.with(holder.eventPicture.context).load(EventObject.thumbnail).into(holder.eventPicture);
 
-
     }
+
+
 
     override fun getItemCount(): Int {
         return dataSetEvents.size
@@ -73,4 +83,10 @@ if (EventObject.date != null) {
         notifyDataSetChanged()
 
     }
+
+
+
+
+
+
 }

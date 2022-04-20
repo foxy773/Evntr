@@ -1,6 +1,5 @@
 package com.android.example.evntrapp
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,6 +14,8 @@ import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.beust.klaxon.Klaxon
+import java.util.*
+
 
 class StartupFragment : Fragment() {
 
@@ -28,6 +29,7 @@ class StartupFragment : Fragment() {
     lateinit var spinner: Spinner
     lateinit var popularIn: TextView
     lateinit var eventCity: TextView
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,16 +51,18 @@ class StartupFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         popularIn = view.findViewById(R.id.textViewPopularIn)
+        //var citySelected = spinner.selectedItem
 
-        val arrayAdapter =
-            context?.let { ArrayAdapter(it, android.R.layout.simple_spinner_dropdown_item, listOf<String>()) }
         spinner = view.findViewById(R.id.spinner1)
-        spinner.adapter = arrayAdapter
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 
            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
 
                 popularIn.text = "Popular in ${spinner.selectedItem.toString()}"
+                var spinnerCity = spinner.selectedItem.toString()
+
+               val newList = eventList.filter { it.place?.city == spinnerCity }
+                   adapter.updateData(newList)
 
 
            }
@@ -74,12 +78,17 @@ class StartupFragment : Fragment() {
         layoutManager = LinearLayoutManager(activity)
         recyclerViewEventBox.layoutManager = layoutManager
 
-        //todo: Må fylle inn resten her
+        //todo: Må fylle inn resten
+
+        // callback under:
         adapter = EventAdapter(eventList) { Event ->
+
 
             eventPrice.text = Event.price.toString()
             eventName.text = Event.title
             eventCity.text = Event.place?.city
+
+
 
 
         }
@@ -89,13 +98,15 @@ class StartupFragment : Fragment() {
 
         getEventAPI(Volley.newRequestQueue(requireContext())) { results ->
             // hva vi ønsker å gjøre med callback her
-
-            adapter.updateData(results?.events ?: listOf())
+            eventList = results?.events ?: listOf()
+            adapter.updateData(eventList)
 
             spinner.adapter = ArrayAdapter(
                 requireContext(),
                 android.R.layout.simple_spinner_dropdown_item,
                 results?.cities?.map { it.city } ?: listOf())
+
+
         }
     }
 
